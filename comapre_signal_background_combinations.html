@@ -1,0 +1,234 @@
+<html dir='ltr' lang='en-US'>
+    <head>
+        <title> Trigger Combinations </title> 
+        
+    <style>
+          html {box-sizing: border-box;}
+          *, *:before, *:after { box-sizing: inherit; }
+          body { margin: 1em 3%; display: flex; justify-content: center; font-size: 80%; font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif; }
+          .container {max-width: 1400px;}
+          p {margin-bottom: .6em;}
+          figure {margin: 0; padding: 0;}
+          img { max-width: 100%;}
+          .thumbnail-grid ul { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;}
+          .thumbnail-grid li {width: 22%;}
+          .thumbnail-grid .description {font-size: .75em; position: relative; padding-right: 25%;}
+          .thumbnail-grid .thumbnail {position: relative;}
+          .thumbnail-grid img {display: block; margin-bottom: .3em;}
+
+          /* Utility classes */
+          .alignright {float: right; margin-left: 1.5em;}
+          .alignleft { float: left; margin-right: 1.5em;}
+          /* Content Links */
+          a:link, a:visited {color: black; text-decoration: none;}
+          a:hover, a:active {color: gray; text-decoration: underline;}
+
+          ul#tabs { list-style-type: none; margin: 30px 0 0 0; padding: 0 0 0.3em 0; }
+          ul#tabs li { display: inline; }
+          ul#tabs li a { color: #42454a; background-color: #dedbde; border: 1px solid #c9c3ba; border-bottom: none; padding: 0.3em; text-decoration: none; }
+          ul#tabs li a:hover { background-color: #f1f0ee; }
+          ul#tabs li a.selected { color: #000; background-color: #f1f0ee; font-weight: bold; padding: 0.7em 0.3em 0.38em 0.3em; }
+          div.tabContent { border: 1px solid #c9c3ba; padding: 0.5em; background-color: #f1f0ee; }
+          div.tabContent.hide { display: none; }
+    </style>
+    
+
+    <script type="text/javascript">
+    
+        //<![CDATA[
+
+        var tabLinks = new Array();
+        var contentDivs = new Array();
+
+        function init() {
+
+          // Grab the tab links and content divs from the page
+          var tabListItems = document.getElementById('tabs').childNodes;
+          for ( var i = 0; i < tabListItems.length; i++ ) {
+            if ( tabListItems[i].nodeName == "LI" ) {
+              var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+              var id = getHash( tabLink.getAttribute('href') );
+              tabLinks[id] = tabLink;
+              contentDivs[id] = document.getElementById( id );
+            }
+          }
+
+          // Assign onclick events to the tab links, and
+          // highlight the first tab
+          var i = 0;
+
+          for ( var id in tabLinks ) {
+            tabLinks[id].onclick = showTab;
+            tabLinks[id].onfocus = function() { this.blur() };
+            if ( i == 0 ) tabLinks[id].className = 'selected';
+            i++;
+          }
+
+          // Hide all content divs except the first
+          var i = 0;
+
+          for ( var id in contentDivs ) {
+            if ( i != 0 ) contentDivs[id].className = 'tabContent hide';
+            i++;
+          }
+        }
+
+        //function showTab() {
+        //  var selectedId = getHash( this.getAttribute('href') );
+
+          // Highlight the selected tab, and dim all others.
+          // Also show the selected content div, and hide all others.
+         // for ( var id in contentDivs ) {
+         //   if ( id == selectedId ) {
+         //     tabLinks[id].className = 'selected';
+         //     contentDivs[id].className = 'tabContent';
+          //  } else {
+         //     tabLinks[id].className = '';
+         //     contentDivs[id].className = 'tabContent hide';
+         //   }
+         // }
+
+          // Stop the browser following the link
+          return false;
+        }
+
+        function getFirstChildWithTagName( element, tagName ) {
+          for ( var i = 0; i < element.childNodes.length; i++ ) {
+            if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
+          }
+        }
+
+        function getHash( url ) {
+          var hashPos = url.lastIndexOf ( '#' );
+          return url.substring( hashPos + 1 );
+        }
+
+        //]]>
+    
+    </script>
+    </head> 
+    <body onload='init()'>
+        <div class = 'container'>
+        <h2>Trigger Combinations (with overlap for different algorithms) </h2>
+        <p>Click on the buttons inside the tabbed menu to see different physics properties:</p>
+        <ul id="tabs">
+          <li><a href="#Jet">nJet</a></li>
+          <li><a href="#Photon">Photon_pt</a></li>
+          <li><a href="#MET">MET_pt</a></li>
+          <li><a href="#Tau">nTau</a></li>
+        </ul> 
+         <div id="Jet" class="tabContent"> 
+ <h3>Jet</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/nJet_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/nJet_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nJet for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Jet_eta_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Jet_eta_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_eta for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Jet_phi_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Jet_phi_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_phi for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Jet_pt_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Jet_pt_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_pt for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Photon" class="tabContent"> 
+ <h3>Photon</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Photon_pt_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Photon_pt_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_pt for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Photon_phi_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Photon_phi_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_phi for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Photon_mass_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Photon_mass_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_mass for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/Photon_eta_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/Photon_eta_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_eta for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="MET" class="tabContent"> 
+ <h3>MET</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/MET_pt_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/MET_pt_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>MET_pt for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/MET_phi_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/MET_phi_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>MET_phi for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Tau" class="tabContent"> 
+ <h3>Tau</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =ComparingDatasets_May2/GluGluToHToInvisible/nTau_GluGluToHToInvisible.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=ComparingDatasets_May2/GluGluToHToInvisible/nTau_GluGluToHToInvisible.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nTau for GluGluToHToInvisible signal </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section> 
+    </body> 
+    </html>
