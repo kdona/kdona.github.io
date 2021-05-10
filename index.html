@@ -1,0 +1,376 @@
+<html dir='ltr' lang='en-US'>
+    <head>
+        <title> Physics properties for different signals </title> 
+        
+    <style>
+          html {box-sizing: border-box;}
+          *, *:before, *:after { box-sizing: inherit; }
+          body { margin: 1em 3%; display: flex; justify-content: center; font-size: 80%; font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif; }
+          .container {max-width: 1400px;}
+          p {margin-bottom: .6em;}
+          figure {margin: 0; padding: 0;}
+          img { max-width: 100%;}
+          .thumbnail-grid ul { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between;}
+          .thumbnail-grid li {width: 22%;}
+          .thumbnail-grid .description {font-size: .75em; position: relative; padding-right: 25%;}
+          .thumbnail-grid .thumbnail {position: relative;}
+          .thumbnail-grid img {display: block; margin-bottom: .3em;}
+
+          /* Utility classes */
+          .alignright {float: right; margin-left: 1.5em;}
+          .alignleft { float: left; margin-right: 1.5em;}
+          /* Content Links */
+          a:link, a:visited {color: black; text-decoration: none;}
+          a:hover, a:active {color: gray; text-decoration: underline;}
+
+          ul#tabs { list-style-type: none; margin: 30px 0 0 0; padding: 0 0 0.3em 0; }
+          ul#tabs li { display: inline; }
+          ul#tabs li a { color: #42454a; background-color: #dedbde; border: 1px solid #c9c3ba; border-bottom: none; padding: 0.3em; text-decoration: none; }
+          ul#tabs li a:hover { background-color: #f1f0ee; }
+          ul#tabs li a.selected { color: #000; background-color: #f1f0ee; font-weight: bold; padding: 0.7em 0.3em 0.38em 0.3em; }
+          div.tabContent { border: 1px solid #c9c3ba; padding: 0.5em; background-color: #f1f0ee; }
+          div.tabContent.hide { display: none; }
+    </style>
+    
+
+    <script type="text/javascript">
+    
+        //<![CDATA[
+
+        var tabLinks = new Array();
+        var contentDivs = new Array();
+
+        function init() {
+
+          // Grab the tab links and content divs from the page
+          var tabListItems = document.getElementById('tabs').childNodes;
+          for ( var i = 0; i < tabListItems.length; i++ ) {
+            if ( tabListItems[i].nodeName == "LI" ) {
+              var tabLink = getFirstChildWithTagName( tabListItems[i], 'A' );
+              var id = getHash( tabLink.getAttribute('href') );
+              tabLinks[id] = tabLink;
+              contentDivs[id] = document.getElementById( id );
+            }
+          }
+
+          // Assign onclick events to the tab links, and
+          // highlight the first tab
+          var i = 0;
+
+          for ( var id in tabLinks ) {
+            tabLinks[id].onclick = showTab;
+            tabLinks[id].onfocus = function() { this.blur() };
+            if ( i == 0 ) tabLinks[id].className = 'selected';
+            i++;
+          }
+
+          // Hide all content divs except the first
+          var i = 0;
+
+          for ( var id in contentDivs ) {
+            if ( i != 0 ) contentDivs[id].className = 'tabContent hide';
+            i++;
+          }
+        }
+
+        //function showTab() {
+        //  var selectedId = getHash( this.getAttribute('href') );
+
+          // Highlight the selected tab, and dim all others.
+          // Also show the selected content div, and hide all others.
+         // for ( var id in contentDivs ) {
+         //   if ( id == selectedId ) {
+         //     tabLinks[id].className = 'selected';
+         //     contentDivs[id].className = 'tabContent';
+          //  } else {
+         //     tabLinks[id].className = '';
+         //     contentDivs[id].className = 'tabContent hide';
+         //   }
+         // }
+
+          // Stop the browser following the link
+          return false;
+        }
+
+        function getFirstChildWithTagName( element, tagName ) {
+          for ( var i = 0; i < element.childNodes.length; i++ ) {
+            if ( element.childNodes[i].nodeName == tagName ) return element.childNodes[i];
+          }
+        }
+
+        function getHash( url ) {
+          var hashPos = url.lastIndexOf ( '#' );
+          return url.substring( hashPos + 1 );
+        }
+
+        //]]>
+    
+    </script>
+    </head> 
+    <body onload='init()'>
+        <div class = 'container'>
+        <h2>Physics properties for different signals </h2>
+        <p>Click on the buttons inside the tabbed menu to see different physics properties:</p>
+        <ul id="tabs">
+          <li><a href="#Jet">Jet</a></li>
+          <li><a href="#Photon">Photon</a></li>
+          <li><a href="#Tau">Tau</a></li>
+          <li><a href="#Electron">Electron</a></li>
+          <li><a href="#Muon">Muon</a></li>
+          <li><a href="#MET">MET</a></li>
+        </ul> 
+         <div id="Jet" class="tabContent"> 
+ <h3>Jet</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/nJet.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/nJet.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nJet </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Jet_eta.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Jet_eta.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_eta </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Jet_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Jet_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_phi </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Jet_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Jet_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Jet_mass.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Jet_mass.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Jet_mass </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Photon" class="tabContent"> 
+ <h3>Photon</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/nPhoton.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/nPhoton.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nPhoton </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Photon_eta.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Photon_eta.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_eta </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Photon_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Photon_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_phi </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Photon_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Photon_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Photon_mass.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Photon_mass.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Photon_mass </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Tau" class="tabContent"> 
+ <h3>Tau</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/nTau.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/nTau.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nTau </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Tau_eta.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Tau_eta.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Tau_eta </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Tau_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Tau_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Tau_phi </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Tau_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Tau_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Tau_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Tau_mass.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Tau_mass.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Tau_mass </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Electron" class="tabContent"> 
+ <h3>Electron</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/nElectron.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/nElectron.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nElectron </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Electron_eta.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Electron_eta.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Electron_eta </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Electron_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Electron_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Electron_phi </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Electron_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Electron_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Electron_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Electron_mass.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Electron_mass.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Electron_mass </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="Muon" class="tabContent"> 
+ <h3>Muon</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/nMuon.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/nMuon.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>nMuon </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Muon_eta.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Muon_eta.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Muon_eta </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Muon_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Muon_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Muon_phi </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Muon_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Muon_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Muon_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/Muon_mass.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/Muon_mass.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>Muon_mass </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section>  <div id="MET" class="tabContent"> 
+ <h3>MET</h3>
+        <section class='thumbnail-grid'>
+            <ul>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/MET_pt.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/MET_pt.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>MET_pt </figcaption> 
+ </figure> 
+ </a> </li>
+ <li> 
+  <a href =kdona.github.io/ComparingDatasets_May2/MET_phi.pdf> <figure> 
+        <div class = 'thumbnail'>
+        <img src=kdona.github.io/ComparingDatasets_May2/MET_phi.pdf width="400"/>
+ </div>
+ <figcaption> <p class='description'>MET_phi </figcaption> 
+ </figure> 
+ </a> </li>
+        </div>
+        </ul>
+        </section> 
+    </body> 
+    </html>
